@@ -75,17 +75,17 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
 
         {/* Glitch Text Effect */}
         <div className="relative mb-4">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-wider text-center relative">
-            <span className="relative inline-block animate-glitch">
+          <h1 className="font-bold text-white tracking-wider text-center relative">
+            <span className="relative inline-block text-5xl md:text-7xl lg:text-8xl animate-glitch">
               COMING SOON
               <span
-                className="absolute top-0 left-0 text-cyan-400 opacity-70 animate-glitch-1"
+                className="absolute top-0 left-0 text-cyan-400 opacity-70 text-5xl md:text-7xl lg:text-8xl animate-glitch-1"
                 aria-hidden="true"
               >
                 COMING SOON
               </span>
               <span
-                className="absolute top-0 left-0 text-pink-400 opacity-70 animate-glitch-2"
+                className="absolute top-0 left-0 text-pink-400 opacity-70 text-5xl md:text-7xl lg:text-8xl animate-glitch-2"
                 aria-hidden="true"
               >
                 COMING SOON
