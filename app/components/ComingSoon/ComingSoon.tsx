@@ -77,15 +77,21 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
         {/* f4rmula Glitch Text Effect */}
         <GlitchText
           text="f4rmula"
-          textClassName="text-3xl md:text-5xl lg:text-6xl"
+          textClassName="text-5xl md:text-7xl lg:text-8xl"
         />
 
+        {/* f4rmula Glitch Text Effect */}
+        {/*<GlitchText
+          text="f4rmula"
+          textClassName="text-3xl md:text-5xl lg:text-6xl"
+        />*/}
+
         {/* COMING SOON Glitch Text Effect */}
-        <GlitchText
+        {/*<GlitchText
           text="COMING SOON"
           className="mb-4"
           textClassName="text-5xl md:text-7xl lg:text-8xl"
-        />
+        />*/}
 
         {/* Countdown Timer */}
         {!isComplete ? (
