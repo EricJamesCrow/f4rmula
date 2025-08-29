@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useCountdown} from './useCountdown';
+import GlitchText from './GlitchText';
 
 interface ComingSoonProps {
   launchDate?: Date | string;
@@ -10,7 +11,7 @@ interface ComingSoonProps {
 const ComingSoon: React.FC<ComingSoonProps> = ({
   launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
   logoPath = 'https://cdn.shopify.com/s/files/1/0766/6532/3746/files/BR0KEFACE0_0.png',
-  brandName = 'F4RMULA',
+  brandName = 'f4rmula',
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,25 +75,11 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
         </div>
 
         {/* Glitch Text Effect */}
-        <div className="relative mb-4">
-          <h1 className="font-bold text-white tracking-wider text-center relative">
-            <span className="relative inline-block text-5xl md:text-7xl lg:text-8xl animate-glitch">
-              COMING SOON
-              <span
-                className="absolute top-0 left-0 text-cyan-400 opacity-70 text-5xl md:text-7xl lg:text-8xl animate-glitch-1"
-                aria-hidden="true"
-              >
-                COMING SOON
-              </span>
-              <span
-                className="absolute top-0 left-0 text-pink-400 opacity-70 text-5xl md:text-7xl lg:text-8xl animate-glitch-2"
-                aria-hidden="true"
-              >
-                COMING SOON
-              </span>
-            </span>
-          </h1>
-        </div>
+        <GlitchText
+          text="COMING SOON"
+          className="mb-4"
+          textClassName="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white tracking-wider"
+        />
 
         {/* Countdown Timer */}
         {!isComplete ? (
