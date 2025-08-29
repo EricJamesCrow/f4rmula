@@ -83,9 +83,9 @@ export default function Homepage() {
   const launchDate = new Date('2025-10-01T00:00:00');
   return (
     <>
-      <ComingSoon launchDate={launchDate} />
+      {/*<ComingSoon launchDate={launchDate} />*/}
       {/*<NeonComingSoon launchDate={launchDate} />*/}
-      {/*<VibrantComingSoon launchDate={launchDate} />*/}
+      <VibrantComingSoon launchDate={launchDate} />
     </>
     // <div className="home">
     //   <FeaturedCollection collection={data.featuredCollection} />

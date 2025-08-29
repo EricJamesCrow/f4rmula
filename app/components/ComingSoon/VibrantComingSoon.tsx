@@ -10,7 +10,7 @@ interface VibrantComingSoonProps {
 const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
   launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
   logoPath = '/logos/BRANDLOGOTEST_mask.png',
-  brandName = 'F4RMULA',
+  brandName = 'f4rmula',
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
