@@ -129,7 +129,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
         )}
 
         {/* Email Signup */}
-        <div
+        {/*<div
           className="w-full max-w-md mb-12 animate-fade-in-up"
           style={{animationDelay: '700ms'}}
         >
@@ -176,7 +176,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
               </p>
             )}
           </form>
-        </div>
+        </div>*/}
 
         {/* Footer */}
         <div
