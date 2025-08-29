@@ -183,7 +183,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
           className="text-gray-600 text-sm animate-fade-in-up"
           style={{animationDelay: '900ms'}}
         >
-          © 2024 {brandName}. All rights reserved.
+          © 2025 {brandName}. All rights reserved.
         </div>
       </div>
     </div>
