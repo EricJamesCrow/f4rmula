@@ -94,7 +94,7 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
         {/* Logo with Floating Animation */}
         <div className="mb-12 relative group">
           <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-orange-500 to-blue-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity animate-pulse"></div>
-          <div className="relative animate-bounce">
+          <div className="relative">
             <img
               src={logoPath}
               alt={brandName}
@@ -117,9 +117,9 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
         </div>
 
         {/* Brand Name with Gradient Effect */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-4 tracking-tighter">
+        <h1 className="font-black mb-4 tracking-tighter">
           <span
-            className="bg-gradient-to-r from-violet-400 via-orange-400 to-blue-400 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl lg:text-9xl bg-gradient-to-r from-violet-400 via-orange-400 to-blue-400 bg-clip-text text-transparent"
             style={{
               backgroundSize: '200% 200%',
               animation: 'gradient 4s ease infinite',
@@ -128,14 +128,6 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
             {brandName}
           </span>
         </h1>
-
-        {/* Coming Soon Text */}
-        <p
-          className="text-2xl md:text-3xl text-gray-300 mb-12 font-light tracking-widest uppercase opacity-0 animate-fade-in"
-          style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}
-        >
-          Coming Soon
-        </p>
 
         {/* Countdown Timer with Glass Morphism */}
         {!isComplete ? (
@@ -191,8 +183,8 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
           </div>
         ) : (
           <div className="mb-12">
-            <h2 className="text-5xl md:text-7xl font-black">
-              <span className="bg-gradient-to-r from-violet-400 via-orange-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
+            <h2 className="font-black">
+              <span className="text-5xl md:text-7xl bg-gradient-to-r from-violet-400 via-orange-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
                 WE&apos;RE LIVE! 🚀
               </span>
             </h2>
@@ -200,7 +192,7 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
         )}
 
         {/* Email Signup with Gradient Border */}
-        <div
+        {/*<div
           className="w-full max-w-lg mb-12 opacity-0 animate-fade-in"
           style={{
             animationDelay: '0.7s',
@@ -249,7 +241,7 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
               </p>
             )}
           </form>
-        </div>
+        </div>*/}
 
         {/* Social Links or Footer */}
         <div
@@ -261,7 +253,7 @@ const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
         >
           <span>© 2025 {brandName}</span>
           <span className="text-gray-700">•</span>
-          <span>Something amazing is coming</span>
+          <span>All rights reserved.</span>
         </div>
       </div>
     </div>

@@ -136,9 +136,9 @@ const NeonComingSoon: React.FC<NeonComingSoonProps> = ({
         </div>
 
         {/* Brand Name with Neon Text Effect */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 relative">
+        <h1 className="font-black mb-6 relative">
           <span
-            className="text-transparent bg-gradient-to-r from-fuchsia-400 via-cyan-400 to-lime-400 bg-clip-text"
+            className="text-6xl md:text-8xl lg:text-9xl text-transparent bg-gradient-to-r from-fuchsia-400 via-cyan-400 to-lime-400 bg-clip-text"
             style={{
               textShadow: `
                 0 0 20px rgba(255, 0, 255, 0.5),
@@ -217,8 +217,8 @@ const NeonComingSoon: React.FC<NeonComingSoonProps> = ({
           </div>
         ) : (
           <div className="mb-12">
-            <h2 className="text-5xl md:text-7xl font-black animate-pulse">
-              <span className="text-transparent bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text">
+            <h2 className="font-black animate-pulse">
+              <span className="text-5xl md:text-7xl text-transparent bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text">
                 [ SYSTEM ONLINE ]
               </span>
             </h2>
@@ -226,7 +226,7 @@ const NeonComingSoon: React.FC<NeonComingSoonProps> = ({
         )}
 
         {/* Email Signup - Neon Style */}
-        <div
+        {/*<div
           className="w-full max-w-lg mb-12 opacity-0 animate-fade-in"
           style={{
             animationDelay: '0.6s',
@@ -235,7 +235,6 @@ const NeonComingSoon: React.FC<NeonComingSoonProps> = ({
         >
           <form onSubmit={handleSubmit} className="relative">
             <div className="relative">
-              {/* Neon border glow */}
               <div className="absolute -inset-[1px] bg-gradient-to-r from-fuchsia-600 to-cyan-600 rounded-lg opacity-75 blur-sm"></div>
 
               <div className="relative flex flex-col sm:flex-row gap-3 bg-black rounded-lg p-1">
@@ -280,7 +279,7 @@ const NeonComingSoon: React.FC<NeonComingSoonProps> = ({
               </p>
             )}
           </form>
-        </div>
+        </div>*/}
 
         {/* Footer */}
         <div

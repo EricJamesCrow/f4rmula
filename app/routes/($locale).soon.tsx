@@ -1,6 +1,6 @@
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction} from 'react-router';
-import {Suspense, useState, useEffect} from 'react';
+import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
@@ -81,26 +81,11 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
   const launchDate = new Date('2025-10-01T00:00:00');
-  const [showVibrant, setShowVibrant] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    // Generate random number on client side only
-    const randomChoice = Math.random() < 0.5;
-    setShowVibrant(randomChoice);
-  }, []);
-
-  // Show nothing until we've made a selection (prevents hydration mismatch)
-  if (showVibrant === null) {
-    return null;
-  }
-
   return (
     <>
-      {showVibrant ? (
-        <VibrantComingSoon launchDate={launchDate} />
-      ) : (
-        <ComingSoon launchDate={launchDate} />
-      )}
+      <ComingSoon launchDate={launchDate} />
+      {/*<NeonComingSoon launchDate={launchDate} />*/}
+      {/*<VibrantComingSoon launchDate={launchDate} />*/}
     </>
     // <div className="home">
     //   <FeaturedCollection collection={data.featuredCollection} />
