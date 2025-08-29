@@ -13,7 +13,7 @@ interface GlitchTextProps {
 const GlitchText: React.FC<GlitchTextProps> = ({
   text,
   className = '',
-  textClassName = 'text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-wider',
+  textClassName = 'text-5xl md:text-7xl lg:text-8xl',
   glitchColor1 = 'text-cyan-400',
   glitchColor2 = 'text-pink-400',
   animate = true,
@@ -26,17 +26,17 @@ const GlitchText: React.FC<GlitchTextProps> = ({
         aria-label={ariaLabel || text}
       >
         <span
-          className={`relative inline-block text-5xl md:text-7xl lg:text-8xl  ${animate ? 'animate-glitch' : ''}`}
+          className={`relative inline-block ${textClassName} ${animate ? 'animate-glitch' : ''}`}
         >
           {text}
           <span
-            className={`absolute top-0 left-0 text-5xl md:text-7xl lg:text-8xl  ${glitchColor1} opacity-70 ${animate ? 'animate-glitch-1' : ''}`}
+            className={`absolute top-0 left-0 ${textClassName} ${glitchColor1} opacity-70 ${animate ? 'animate-glitch-1' : ''}`}
             aria-hidden="true"
           >
             {text}
           </span>
           <span
-            className={`absolute top-0 left-0 text-5xl md:text-7xl lg:text-8xl  ${glitchColor2} opacity-70 ${animate ? 'animate-glitch-2' : ''}`}
+            className={`absolute top-0 left-0 ${textClassName} ${glitchColor2} opacity-70 ${animate ? 'animate-glitch-2' : ''}`}
             aria-hidden="true"
           >
             {text}

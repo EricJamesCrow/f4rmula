@@ -16,17 +16,17 @@ import SimpleComingSoon from '~/components/ComingSoon/SimpleComingSoon';
 
 export const meta: MetaFunction = () => {
   return [
-    {title: 'F4RMULA - Coming Soon'},
+    {title: 'f4rmula - Coming Soon'},
     {
       name: 'description',
       content:
-        'Something special is coming. Be the first to know when F4RMULA launches.',
+        'Something special is coming. Be the first to know when f4rmula launches.',
     },
-    {property: 'og:title', content: 'F4RMULA - Coming Soon'},
+    {property: 'og:title', content: 'f4rmula - Coming Soon'},
     {
       property: 'og:description',
       content:
-        'Something special is coming. Be the first to know when F4RMULA launches.',
+        'Something special is coming. Be the first to know when f4rmula launches.',
     },
     {property: 'og:type', content: 'website'},
   ];
