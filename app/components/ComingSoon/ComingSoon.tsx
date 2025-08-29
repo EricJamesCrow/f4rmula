@@ -9,7 +9,7 @@ interface ComingSoonProps {
 
 const ComingSoon: React.FC<ComingSoonProps> = ({
   launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-  logoPath = '/logos/BR0KEFACE0_0+.png',
+  logoPath = 'https://cdn.shopify.com/s/files/1/0766/6532/3746/files/BR0KEFACE0_0.png',
   brandName = 'F4RMULA',
 }) => {
   const [email, setEmail] = useState('');

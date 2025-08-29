@@ -9,7 +9,7 @@ interface SimpleComingSoonProps {
 
 const SimpleComingSoon: React.FC<SimpleComingSoonProps> = ({
   launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
-  logoPath = '/logos/BRANDLOGOTEST_mask.png',
+  logoPath = 'https://cdn.shopify.com/s/files/1/0766/6532/3746/files/BR0KEFACE0_0.png',
   brandName = 'F4RMULA',
 }) => {
   const [email, setEmail] = useState('');
