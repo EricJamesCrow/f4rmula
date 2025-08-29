@@ -9,6 +9,8 @@ import type {
 import {ProductItem} from '~/components/ProductItem';
 import ComingSoon from '~/components/ComingSoon/ComingSoon';
 import SimpleComingSoon from '~/components/ComingSoon/SimpleComingSoon';
+import VibrantComingSoon from '~/components/ComingSoon/VibrantComingSoon';
+import NeonComingSoon from '~/components/ComingSoon/NeonComingSoon';
 
 // export const meta: MetaFunction = () => {
 //   return [{title: 'Hydrogen | Home'}];
@@ -81,7 +83,9 @@ export default function Homepage() {
   const launchDate = new Date('2025-10-01T00:00:00');
   return (
     <>
-      <ComingSoon launchDate={launchDate} />
+      {/*<ComingSoon launchDate={launchDate} />*/}
+      {/*<NeonComingSoon launchDate={launchDate} />*/}
+      <VibrantComingSoon launchDate={launchDate} />
     </>
     // <div className="home">
     //   <FeaturedCollection collection={data.featuredCollection} />
