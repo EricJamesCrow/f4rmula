@@ -7,9 +7,29 @@ import type {
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import {ProductItem} from '~/components/ProductItem';
+import ComingSoon from '~/components/ComingSoon/ComingSoon';
+import SimpleComingSoon from '~/components/ComingSoon/SimpleComingSoon';
+
+// export const meta: MetaFunction = () => {
+//   return [{title: 'Hydrogen | Home'}];
+// };
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [
+    {title: 'F4RMULA - Coming Soon'},
+    {
+      name: 'description',
+      content:
+        'Something special is coming. Be the first to know when F4RMULA launches.',
+    },
+    {property: 'og:title', content: 'F4RMULA - Coming Soon'},
+    {
+      property: 'og:description',
+      content:
+        'Something special is coming. Be the first to know when F4RMULA launches.',
+    },
+    {property: 'og:type', content: 'website'},
+  ];
 };
 
 export async function loader(args: LoaderFunctionArgs) {
@@ -57,12 +77,16 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 export default function Homepage() {
-  const data = useLoaderData<typeof loader>();
+  // const data = useLoaderData<typeof loader>();
+  const launchDate = new Date('2025-10-01T00:00:00');
   return (
-    <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
-    </div>
+    <>
+      <ComingSoon launchDate={launchDate} />
+    </>
+    // <div className="home">
+    //   <FeaturedCollection collection={data.featuredCollection} />
+    //   <RecommendedProducts products={data.recommendedProducts} />
+    // </div>
   );
 }
 

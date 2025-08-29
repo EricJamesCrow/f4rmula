@@ -94,11 +94,6 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
           </h1>
         </div>
 
-        {/* Tagline */}
-        <p className="text-gray-400 text-lg md:text-xl mb-12 text-center animate-fade-in-up animation-delay-200">
-          Something big is dropping...
-        </p>
-
         {/* Countdown Timer */}
         {!isComplete ? (
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
