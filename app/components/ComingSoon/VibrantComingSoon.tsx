@@ -9,7 +9,7 @@ interface VibrantComingSoonProps {
 
 const VibrantComingSoon: React.FC<VibrantComingSoonProps> = ({
   launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-  logoPath = '/logos/BRANDLOGOTEST_mask.png',
+  logoPath = 'https://cdn.shopify.com/s/files/1/0766/6532/3746/files/BRANDLOGOTEST_mask.png',
   brandName = 'f4rmula',
 }) => {
   const [email, setEmail] = useState('');
