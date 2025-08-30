@@ -16,7 +16,7 @@ import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
-import {PageLayout} from './components/PageLayout';
+import {VibrantPageLayout} from './components/Vibrant';
 
 export type RootLoader = typeof loader;
 
@@ -164,7 +164,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
             shop={data.shop}
             consent={data.consent}
           >
-            <PageLayout {...data}>{children}</PageLayout>
+            <VibrantPageLayout {...data}>{children}</VibrantPageLayout>
           </Analytics.Provider>
         ) : (
           children
