@@ -73,21 +73,33 @@ function CollectionItem({
 }) {
   return (
     <Link
-      className="collection-item"
+      className="group relative block"
       key={collection.id}
       to={`/collections/${collection.handle}`}
       prefetch="intent"
     >
-      {collection?.image && (
-        <Image
-          alt={collection.image.altText || collection.title}
-          aspectRatio="1/1"
-          data={collection.image}
-          loading={index < 3 ? 'eager' : undefined}
-          sizes="(min-width: 45em) 400px, 100vw"
-        />
-      )}
-      <h5>{collection.title}</h5>
+      <div className="relative overflow-hidden rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800 transition-all duration-300 group-hover:border-cyan-500/50">
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+
+        {collection?.image && (
+          <div className="aspect-[3/2] overflow-hidden">
+            <Image
+              alt={collection.image.altText || collection.title}
+              aspectRatio="3/2"
+              data={collection.image}
+              loading={index < 3 ? 'eager' : undefined}
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        )}
+
+        <div className="p-4">
+          <h2 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
+            {collection.title}
+          </h2>
+        </div>
+      </div>
     </Link>
   );
 }

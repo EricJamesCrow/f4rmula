@@ -6,16 +6,16 @@ import type {
   HeaderQuery,
 } from 'storefrontapi.generated';
 import {Aside} from '~/components/Aside';
-import {VibrantHeader} from './VibrantHeader';
-import {VibrantFooter} from './VibrantFooter';
-import {CartMain} from '~/components/CartMain';
+import {DarkHeader} from './DarkHeader';
+import {DarkFooter} from './DarkFooter';
+import {DarkCartMain} from './DarkCartMain';
 import {
   SEARCH_ENDPOINT,
   SearchFormPredictive,
 } from '~/components/SearchFormPredictive';
 import {SearchResultsPredictive} from '~/components/SearchResultsPredictive';
 
-interface VibrantPageLayoutProps {
+interface DarkPageLayoutProps {
   cart: Promise<CartApiQueryFragment | null>;
   footer: Promise<FooterQuery | null>;
   header: HeaderQuery;
@@ -24,71 +24,45 @@ interface VibrantPageLayoutProps {
   children?: React.ReactNode;
 }
 
-export function VibrantPageLayout({
+export function DarkPageLayout({
   cart,
   children = null,
   footer,
   header,
   isLoggedIn,
   publicStoreDomain,
-}: VibrantPageLayoutProps) {
-  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
+}: DarkPageLayoutProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    setIsLoaded(true);
   }, []);
 
   return (
     <Aside.Provider>
-      <VibrantCartAside cart={cart} />
-      <VibrantSearchAside />
-      <VibrantMobileMenuAside
+      <DarkCartAside cart={cart} />
+      <DarkSearchAside />
+      <DarkMobileMenuAside
         header={header}
         publicStoreDomain={publicStoreDomain}
       />
 
-      <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 overflow-hidden">
-        {/* Dynamic Gradient Background */}
-        <div
-          className="fixed inset-0 opacity-30 transition-all duration-300"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(147, 51, 234, 0.3) 0%, transparent 50%)`,
-          }}
-        />
-
-        {/* Animated Gradient Orbs */}
-        <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-          <div
-            className="absolute top-1/2 -right-20 w-96 h-96 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full blur-3xl opacity-20 animate-pulse"
-            style={{animationDelay: '0.7s'}}
-          ></div>
-          <div
-            className="absolute -bottom-20 left-1/3 w-96 h-96 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"
-            style={{animationDelay: '1s'}}
-          ></div>
+      <div className="relative min-h-screen bg-black overflow-hidden">
+        {/* Animated Background Grid */}
+        <div className="fixed inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]">
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black"></div>
         </div>
 
-        {/* Noise Texture Overlay */}
-        <div
-          className="fixed inset-0 opacity-[0.015] pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
+        {/* Gradient Overlays */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
           {header && (
-            <VibrantHeader
+            <DarkHeader
               header={header}
               cart={cart}
               isLoggedIn={isLoggedIn}
@@ -96,7 +70,7 @@ export function VibrantPageLayout({
             />
           )}
           <main className="min-h-[60vh]">{children}</main>
-          <VibrantFooter
+          <DarkFooter
             footer={footer}
             header={header}
             publicStoreDomain={publicStoreDomain}
@@ -107,20 +81,20 @@ export function VibrantPageLayout({
   );
 }
 
-function VibrantCartAside({cart}: {cart: VibrantPageLayoutProps['cart']}) {
+function DarkCartAside({cart}: {cart: DarkPageLayoutProps['cart']}) {
   return (
     <Aside type="cart" heading="CART">
-      <div className="h-full bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      <div className="h-full bg-black">
         {/* Glass overlay */}
-        <div className="h-full bg-slate-950/80 backdrop-blur-xl">
+        <div className="h-full bg-gray-900/90 backdrop-blur-sm">
           {/* Gradient accent */}
-          <div className="h-1 bg-gradient-to-r from-violet-600 via-orange-600 to-blue-600"></div>
+          <div className="h-1 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
 
           <div className="p-6">
             <Suspense
               fallback={
                 <div className="flex items-center justify-center h-32">
-                  <div className="text-violet-400 animate-pulse">
+                  <div className="text-cyan-400 animate-pulse">
                     Loading cart...
                   </div>
                 </div>
@@ -128,7 +102,7 @@ function VibrantCartAside({cart}: {cart: VibrantPageLayoutProps['cart']}) {
             >
               <Await resolve={cart}>
                 {(cart) => {
-                  return <CartMain cart={cart} layout="aside" />;
+                  return <DarkCartMain cart={cart} layout="aside" />;
                 }}
               </Await>
             </Suspense>
@@ -139,15 +113,15 @@ function VibrantCartAside({cart}: {cart: VibrantPageLayoutProps['cart']}) {
   );
 }
 
-function VibrantSearchAside() {
+function DarkSearchAside() {
   const queriesDatalistId = useId();
   return (
     <Aside type="search" heading="SEARCH">
-      <div className="h-full bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+      <div className="h-full bg-black">
         {/* Glass overlay */}
-        <div className="h-full bg-slate-950/80 backdrop-blur-xl">
+        <div className="h-full bg-gray-900/90 backdrop-blur-sm">
           {/* Gradient accent */}
-          <div className="h-1 bg-gradient-to-r from-violet-600 via-orange-600 to-blue-600"></div>
+          <div className="h-1 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
 
           <div className="p-6">
             <div className="predictive-search">
@@ -163,11 +137,11 @@ function VibrantSearchAside() {
                         ref={inputRef}
                         type="search"
                         list={queriesDatalistId}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-violet-500 focus:bg-white/15 transition-all duration-300"
+                        className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
                       />
                       <button
                         onClick={goToSearch}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-gradient-to-r from-violet-600 to-orange-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
                       >
                         Search
                       </button>
@@ -184,7 +158,7 @@ function VibrantSearchAside() {
                   if (state === 'loading' && term.current) {
                     return (
                       <div className="mt-8 text-center">
-                        <div className="text-violet-400 animate-pulse">
+                        <div className="text-cyan-400 animate-pulse">
                           Searching...
                         </div>
                       </div>
@@ -203,8 +177,8 @@ function VibrantSearchAside() {
                       />
 
                       {products.length > 0 && (
-                        <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                          <h3 className="text-violet-400 font-bold mb-3">
+                        <div className="p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800">
+                          <h3 className="text-cyan-400 font-bold mb-3">
                             Products
                           </h3>
                           <SearchResultsPredictive.Products
@@ -216,8 +190,8 @@ function VibrantSearchAside() {
                       )}
 
                       {collections.length > 0 && (
-                        <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                          <h3 className="text-orange-400 font-bold mb-3">
+                        <div className="p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800">
+                          <h3 className="text-pink-400 font-bold mb-3">
                             Collections
                           </h3>
                           <SearchResultsPredictive.Collections
@@ -229,8 +203,8 @@ function VibrantSearchAside() {
                       )}
 
                       {pages.length > 0 && (
-                        <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                          <h3 className="text-blue-400 font-bold mb-3">
+                        <div className="p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800">
+                          <h3 className="text-cyan-400 font-bold mb-3">
                             Pages
                           </h3>
                           <SearchResultsPredictive.Pages
@@ -242,7 +216,7 @@ function VibrantSearchAside() {
                       )}
 
                       {articles.length > 0 && (
-                        <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+                        <div className="p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800">
                           <h3 className="text-pink-400 font-bold mb-3">
                             Articles
                           </h3>
@@ -258,9 +232,9 @@ function VibrantSearchAside() {
                         <Link
                           onClick={closeSearch}
                           to={`${SEARCH_ENDPOINT}?q=${term.current}`}
-                          className="block text-center py-3 px-6 bg-gradient-to-r from-violet-600/20 to-orange-600/20 border border-violet-500/30 rounded-xl text-violet-400 hover:from-violet-600/30 hover:to-orange-600/30 transition-all duration-300"
+                          className="block text-center py-3 px-6 bg-gray-900/50 border border-gray-800 rounded-lg text-cyan-400 hover:bg-gray-900/70 transition-all duration-300"
                         >
-                          View all results for &quot;{term.current}&quot; →
+                          View all results for "{term.current}" →
                         </Link>
                       ) : null}
                     </div>
@@ -275,26 +249,26 @@ function VibrantSearchAside() {
   );
 }
 
-function VibrantMobileMenuAside({
+function DarkMobileMenuAside({
   header,
   publicStoreDomain,
 }: {
-  header: VibrantPageLayoutProps['header'];
-  publicStoreDomain: VibrantPageLayoutProps['publicStoreDomain'];
+  header: DarkPageLayoutProps['header'];
+  publicStoreDomain: DarkPageLayoutProps['publicStoreDomain'];
 }) {
   return (
     header.menu &&
     header.shop.primaryDomain?.url && (
       <Aside type="mobile" heading="MENU">
-        <div className="h-full bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+        <div className="h-full bg-black">
           {/* Glass overlay */}
-          <div className="h-full bg-slate-950/80 backdrop-blur-xl">
+          <div className="h-full bg-gray-900/90 backdrop-blur-sm">
             {/* Gradient accent */}
-            <div className="h-1 bg-gradient-to-r from-violet-600 via-orange-600 to-blue-600"></div>
+            <div className="h-1 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
 
             <div className="p-6">
               <nav className="space-y-2">
-                <VibrantHeaderMenu
+                <DarkHeaderMenu
                   menu={header.menu}
                   viewport="mobile"
                   primaryDomainUrl={header.shop.primaryDomain.url}
@@ -309,5 +283,5 @@ function VibrantMobileMenuAside({
   );
 }
 
-// Re-export VibrantHeaderMenu from VibrantHeader
-import {VibrantHeaderMenu} from './VibrantHeader';
+// Re-export DarkHeaderMenu from DarkHeader
+import {DarkHeaderMenu} from './DarkHeader';

@@ -5,7 +5,7 @@ import {
 import {useLoaderData, type MetaFunction} from 'react-router';
 import {getPaginationVariables, Analytics} from '@shopify/hydrogen';
 import {SearchForm} from '~/components/SearchForm';
-import {SearchResults} from '~/components/SearchResults';
+import {DarkSearchResults} from '~/components/Dark/DarkSearchResults';
 import {
   type RegularSearchReturn,
   type PredictiveSearchReturn,
@@ -40,37 +40,61 @@ export default function SearchPage() {
   if (type === 'predictive') return null;
 
   return (
-    <div className="search">
-      <h1>Search</h1>
-      <SearchForm>
-        {({inputRef}) => (
-          <>
-            <input
-              defaultValue={term}
-              name="q"
-              placeholder="Search…"
-              ref={inputRef}
-              type="search"
-            />
-            &nbsp;
-            <button type="submit">Search</button>
-          </>
-        )}
-      </SearchForm>
-      {error && <p style={{color: 'red'}}>{error}</p>}
-      {!term || !result?.total ? (
-        <SearchResults.Empty />
-      ) : (
-        <SearchResults result={result} term={term}>
-          {({articles, pages, products, term}) => (
-            <div>
-              <SearchResults.Products products={products} term={term} />
-              <SearchResults.Pages pages={pages} term={term} />
-              <SearchResults.Articles articles={articles} term={term} />
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent mb-2">
+          Search
+        </h1>
+
+        <SearchForm>
+          {({inputRef}) => (
+            <div className="mb-8">
+              <div className="flex gap-2 max-w-2xl">
+                <input
+                  defaultValue={term}
+                  name="q"
+                  placeholder="Search products..."
+                  ref={inputRef}
+                  type="search"
+                  className="flex-1 px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+                >
+                  Search
+                </button>
+              </div>
             </div>
           )}
-        </SearchResults>
-      )}
+        </SearchForm>
+
+        {term && (
+          <p className="text-gray-400 mb-8">
+            Showing results for: <span className="text-cyan-400">"{term}"</span>
+          </p>
+        )}
+
+        {error && (
+          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 mb-8">
+            <p>There was an error with your search. Please try again.</p>
+          </div>
+        )}
+
+        {!term || !result?.total ? (
+          <DarkSearchResults.Empty />
+        ) : (
+          <DarkSearchResults result={result} term={term}>
+            {({articles, pages, products, term}) => (
+              <div className="space-y-8">
+                <DarkSearchResults.Products products={products} term={term} />
+                <DarkSearchResults.Pages pages={pages} term={term} />
+                <DarkSearchResults.Articles articles={articles} term={term} />
+              </div>
+            )}
+          </DarkSearchResults>
+        )}
+      </div>
       <Analytics.SearchView data={{searchTerm: term, searchResults: result}} />
     </div>
   );

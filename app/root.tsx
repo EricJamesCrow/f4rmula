@@ -16,7 +16,8 @@ import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
-import {VibrantPageLayout} from './components/Vibrant';
+import {DarkPageLayout} from './components/Dark';
+import darkThemeStyles from '~/styles/dark-theme.css?url';
 
 export type RootLoader = typeof loader;
 
@@ -154,6 +155,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
         <link rel="stylesheet" href={tailwindCss}></link>
         <link rel="stylesheet" href={resetStyles}></link>
         <link rel="stylesheet" href={appStyles}></link>
+        <link rel="stylesheet" href={darkThemeStyles}></link>
         <Meta />
         <Links />
       </head>
@@ -164,7 +166,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
             shop={data.shop}
             consent={data.consent}
           >
-            <VibrantPageLayout {...data}>{children}</VibrantPageLayout>
+            <DarkPageLayout {...data}>{children}</DarkPageLayout>
           </Analytics.Provider>
         ) : (
           children
