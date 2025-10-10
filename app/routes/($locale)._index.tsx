@@ -22,13 +22,13 @@ export const meta: MetaFunction = () => {
     {
       name: 'description',
       content:
-        'Something special is coming. Be the first to know when f4rmula launches.',
+        '',
     },
     {property: 'og:title', content: 'f4rmula - Coming Soon'},
     {
       property: 'og:description',
       content:
-        'Something special is coming. Be the first to know when f4rmula launches.',
+        '',
     },
     {property: 'og:type', content: 'website'},
   ];
@@ -80,7 +80,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
-  const launchDate = new Date('2025-10-01T00:00:00');
+  const launchDate = new Date('2025-10-31T00:00:00');
   const [showVibrant, setShowVibrant] = useState<boolean | null>(null);
 
   useEffect(() => {

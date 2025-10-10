@@ -80,7 +80,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
-  const launchDate = new Date('2025-10-01T00:00:00');
+  const launchDate = new Date('2025-10-31T00:00:00');
   return (
     <>
       {/*<ComingSoon launchDate={launchDate} />*/}
